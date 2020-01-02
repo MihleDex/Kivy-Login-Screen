@@ -16,7 +16,10 @@ class LoadingPopup(Popup):
 	def dismiss_popup(self, dt):
 		self.dismiss()
 
-class MainWindow(Screen):
+class StartWindow(Screen):
+	pass
+
+class SignUpWindow(Screen):
 	pass
 	"""
 	firebaseConfig = {
@@ -39,7 +42,7 @@ class MainWindow(Screen):
 		user = self.auth.create_user_with_email_and_password(email,password)
 		print("Success")"""
 
-class SecondWindow(Screen):
+class LoginWindow(Screen):
     pass
 
 class WindowManager(ScreenManager):
