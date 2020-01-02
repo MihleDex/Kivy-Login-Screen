@@ -3,3 +3,5 @@
 Kivy Login Screen written with Python and Kivy
 
 Has support for firebase authentication
+
+![Screenshot](prev.png)
