@@ -1,0 +1,114 @@
+#:import Factory kivy.factory.Factory
+WindowManager:
+	MainWindow:
+	SecondWindow:
+
+<LoadingPopup>:
+	size_hint: (.8, .2)
+	title: 'Loading'
+	Button:
+		text: 'Please Wait...'
+		disabled: True
+		background_color: (0, 1, 0, 1)
+<MainWIndow>:
+	name: "main"
+	id: main_window
+	Widget:
+		canvas:
+	        Rectangle:
+	            pos: self.pos
+	            size: self.size
+	            source: "login_background.jpg"
+
+	FloatLayout:
+		GridLayout:
+			size_hint: (.8, .2)
+			pos_hint: {'x': .1, 'y': .4}
+			cols:1
+			canvas:
+				Color:
+					rgba: 0,.4,0,.7
+	        	Rectangle:
+	            	pos: self.pos
+	            	size: self.size
+			Label:
+				text:"email:"
+				bold: True
+			TextInput:
+				id: username
+				multiline: False
+			Label:
+				text:"Password:"
+				bold: True
+			TextInput:
+				id: password
+				multiline: False
+				password: True
+		Button:
+			background_color: (0, 0, 1, .8)
+			bold: True
+			text:"Sign Up"
+			size_hint: (.2,.07)
+			pos_hint: {'x': .4, 'y': .3}
+			on_release:
+				#root.auth_user(username.text,password.text)
+				Factory.LoadingPopup().open()
+				app.root.current ="second_window"
+				#root.manager.transition.direction = "left"
+	
+
+<SecondWindow>:
+	name: "second_window"
+	id: second_window
+	Widget:
+		canvas:
+	        Rectangle:
+	            pos: self.pos
+	            size: self.size
+	            source: "login_background.jpg"
+
+	FloatLayout:
+		GridLayout:
+			size_hint: (.8, .2)
+			pos_hint: {'x': .1, 'y': .4}
+			cols:1
+			canvas:
+				Color:
+					rgba: 0,.4,0,.7
+	        	Rectangle:
+	            	pos: self.pos
+	            	size: self.size
+			Label:
+				text:"email:"
+				bold: True
+			TextInput:
+				id: username
+				multiline: False
+			Label:
+				text:"Password:"
+				bold: True
+			TextInput:
+				id: password
+				multiline: False
+				password: True
+		Button:
+			background_color: (1, 0, 0, .8)
+			bold: True
+			text:"Login"
+			size_hint: (.2,.07)
+			pos_hint: {'x': .4, 'y': .3}
+			on_release:
+				#root.auth_user(username.text,password.text)
+				#app.root.current ="second_window"
+				#root.manager.transition.direction = "left"
+
+		Button:
+			background_color: (0, 0, 1, .8)
+			bold: True
+			text:"Sign Up"
+			size_hint: (.2,.07)
+			pos_hint: {'x': .4, 'y': .21}
+			on_release:
+				#root.auth_user(username.text,password.text)
+				app.root.current ="main"
+				root.manager.transition.direction = "right"
