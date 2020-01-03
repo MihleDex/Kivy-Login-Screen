@@ -12,6 +12,19 @@ WindowManager:
 		disabled: True
 		background_color: (0, 1, 0, 1)
 
+<SButton@Button>:
+	background_color: ( 0, 0, 0, 0)
+	background_normal: ''
+	back_color: (1,0,1,1)
+	border_radius: [18]
+	canvas.before:
+		Color:
+			rgba: self.back_color 
+		RoundedRectangle:
+			size: self.size 
+			pos: self.pos 
+			radius: self.border_radius
+
 <StartWIndow>:
 	name: "start_window"
 	id: start_window
@@ -24,26 +37,20 @@ WindowManager:
 
 	FloatLayout:
 		GridLayout:
+			orientation: 'horizontal'
 			size_hint: (.8, .2)
-			pos_hint: {'x': .1, 'y': .4}
+			pos_hint: {'x': .1, 'y': .1}
 			cols:1
-			canvas:
-				Color:
-					rgba: 0,.4,0,.7
-	        	Rectangle:
-	            	pos: self.pos
-	            	size: self.size
-			
-			Button:
-				background_color: (1, 0, 0, .7)
+			SButton:
+				back_color: (0, .4, 0, .8)
 				bold: True
 				text:"Login"
 				on_release:
 					app.root.current ="Login_window"
 					root.manager.transition.direction = "left"
 
-			Button:
-				background_color: (0, 0, 1, .8)
+			SButton:
+				back_color: (.2, 0, .4, .8)
 				bold: True
 				text:"SignUp"
 				on_release:
@@ -84,8 +91,8 @@ WindowManager:
 				id: password
 				multiline: False
 				password: True
-		Button:
-			background_color: (1, 0, 0, .8)
+		SButton:
+			back_color: (0, .4, 0, .8)
 			bold: True
 			text:"Sign Up"
 			size_hint: (.2,.07)
@@ -95,8 +102,8 @@ WindowManager:
 				Factory.LoadingPopup().open()
 				#root.manager.transition.direction = "left"
 
-		Button:
-			background_color: (0, 0, 1, .8)
+		SButton:
+			back_color: (0, 0, .4, .8)
 			bold: True
 			text:"Cancel"
 			size_hint: (.2,.07)
@@ -141,8 +148,8 @@ WindowManager:
 				id: password
 				multiline: False
 				password: True
-		Button:
-			background_color: (1, 0, 0, .8)
+		SButton:
+			back_color: (0, .4, 0, .8)
 			bold: True
 			text:"Login"
 			size_hint: (.2,.07)
@@ -153,8 +160,8 @@ WindowManager:
 				#app.root.current ="Login_window"
 				#root.manager.transition.direction = "left"
 
-		Button:
-			background_color: (0, 0, 1, .8)
+		SButton:
+			back_color: (0, 0, .4, .8)
 			bold: True
 			text:"Cancel"
 			size_hint: (.2,.07)
@@ -163,3 +170,5 @@ WindowManager:
 				#root.auth_user(username.text,password.text)
 				app.root.current ="start_window"
 				root.manager.transition.direction = "right"
+
+
