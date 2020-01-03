@@ -23,7 +23,7 @@ class SignUpWindow(Screen):
 	pass
 	"""
 	firebaseConfig = {
-	"apiKey":"AIzaSyD4Q-dRlNH8ZoaLdcyZ2qVUSn8EHX9texM",
+	"apiKey":"xxxxxxxxx",
     "authDomain": "testapp-4d890.firebaseapp.com",
     "databaseURL": "https://testapp-4d890.firebaseio.com",
     "projectId": "testapp-4d890",
