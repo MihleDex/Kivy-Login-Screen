@@ -1,0 +1,174 @@
+#:import Factory kivy.factory.Factory
+WindowManager:
+	StartWindow:
+	SignUpWindow:
+	LoginWindow:
+
+<LoadingPopup>:
+	size_hint: (.8, .2)
+	title: 'Loading'
+	Button:
+		text: 'Please Wait...'
+		disabled: True
+		background_color: (0, 1, 0, 1)
+
+<SButton@Button>:
+	background_color: ( 0, 0, 0, 0)
+	background_normal: ''
+	back_color: (1,0,1,1)
+	border_radius: [18]
+	canvas.before:
+		Color:
+			rgba: self.back_color 
+		RoundedRectangle:
+			size: self.size 
+			pos: self.pos 
+			radius: self.border_radius
+
+<StartWIndow>:
+	name: "start_window"
+	id: start_window
+	Widget:
+		canvas:
+	        Rectangle:
+	            pos: self.pos
+	            size: self.size
+	            source: "login_background.jpg"
+
+	FloatLayout:
+		GridLayout:
+			orientation: 'horizontal'
+			size_hint: (.8, .2)
+			pos_hint: {'x': .1, 'y': .1}
+			cols:1
+			SButton:
+				back_color: (0, .4, 0, .8)
+				bold: True
+				text:"Login"
+				on_release:
+					app.root.current ="Login_window"
+					root.manager.transition.direction = "left"
+
+			SButton:
+				back_color: (.2, 0, .4, .8)
+				bold: True
+				text:"SignUp"
+				on_release:
+					app.root.current ="signup_window"
+					root.manager.transition.direction = "left"
+
+<SignUpWIndow>:
+	name: "signup_window"
+	id: signup_window
+	Widget:
+		canvas:
+	        Rectangle:
+	            pos: self.pos
+	            size: self.size
+	            source: "login_background.jpg"
+
+	FloatLayout:
+		GridLayout:
+			size_hint: (.8, .2)
+			pos_hint: {'x': .1, 'y': .4}
+			cols:1
+			canvas:
+				Color:
+					rgba: 0,.4,0,.7
+	        	Rectangle:
+	            	pos: self.pos
+	            	size: self.size
+			Label:
+				text:"email:"
+				bold: True
+			TextInput:
+				id: username
+				multiline: False
+			Label:
+				text:"Password:"
+				bold: True
+			TextInput:
+				id: password
+				multiline: False
+				password: True
+		SButton:
+			back_color: (0, .4, 0, .8)
+			bold: True
+			text:"Sign Up"
+			size_hint: (.8,.1)
+			pos_hint: {'x': .1, 'y': .2}
+			on_release:
+				#root.auth_user(username.text,password.text)
+				Factory.LoadingPopup().open()
+				#root.manager.transition.direction = "left"
+
+		SButton:
+			back_color: (0, 0, .4, .8)
+			bold: True
+			text:"Cancel"
+			size_hint: (.8,.1)
+			pos_hint: {'x': .1, 'y': .1}
+			on_release:
+				#root.auth_user(username.text,password.text)
+				app.root.current ="start_window"
+				root.manager.transition.direction = "right"
+	
+
+<LoginWindow>:
+	name: "Login_window"
+	id: Login_window
+	Widget:
+		canvas:
+	        Rectangle:
+	            pos: self.pos
+	            size: self.size
+	            source: "login_background.jpg"
+
+	FloatLayout:
+		GridLayout:
+			size_hint: (.8, .2)
+			pos_hint: {'x': .1, 'y': .4}
+			cols:1
+			canvas:
+				Color:
+					rgba: 0,.4,0,.7
+	        	Rectangle:
+	            	pos: self.pos
+	            	size: self.size
+			Label:
+				text:"email:"
+				bold: True
+			TextInput:
+				id: username
+				multiline: False
+			Label:
+				text:"Password:"
+				bold: True
+			TextInput:
+				id: password
+				multiline: False
+				password: True
+		SButton:
+			back_color: (0, .4, 0, .8)
+			bold: True
+			text:"Login"
+			size_hint: (.8,.1)
+			pos_hint: {'x': .1, 'y': .2}
+			on_release:
+				Factory.LoadingPopup().open()
+				#root.auth_user(username.text,password.text)
+				#app.root.current ="Login_window"
+				#root.manager.transition.direction = "left"
+
+		SButton:
+			back_color: (0, 0, .4, .8)
+			bold: True
+			text:"Cancel"
+			size_hint: (.8,.1)
+			pos_hint: {'x': .1, 'y': .1}
+			on_release:
+				#root.auth_user(username.text,password.text)
+				app.root.current ="start_window"
+				root.manager.transition.direction = "right"
+
+

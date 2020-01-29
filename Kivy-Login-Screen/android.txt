@@ -1,0 +1,5 @@
+title = myPyApp
+
+author = AR
+
+orientation = portrait
