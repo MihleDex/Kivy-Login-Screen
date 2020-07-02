@@ -44,6 +44,8 @@ class SignUpWindow(Screen):
 
 class LoginWindow(Screen):
     pass
+class HomeWindow(Screen):
+	pass
 
 class WindowManager(ScreenManager):
 	pass

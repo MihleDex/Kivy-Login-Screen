@@ -3,6 +3,7 @@ WindowManager:
 	StartWindow:
 	SignUpWindow:
 	LoginWindow:
+	HomeWindow:
 
 <LoadingPopup>:
 	size_hint: (.8, .2)
@@ -159,6 +160,7 @@ WindowManager:
 				#root.auth_user(username.text,password.text)
 				#app.root.current ="Login_window"
 				#root.manager.transition.direction = "left"
+				app.root.current = "HomeWindow"
 
 		SButton:
 			back_color: (0, 0, .4, .8)
@@ -172,3 +174,21 @@ WindowManager:
 				root.manager.transition.direction = "right"
 
 
+<HomeWindow>:
+	name: "HomeWindow"
+	id: HomeWindow
+	Widget:
+		canvas:
+			Color:
+				rgba: 1,1,1,1
+	    	Rectangle:
+	            pos: self.pos
+	            size: self.size
+	FloatLayout:
+		BoxLayout:
+			orientation: 'vertical'
+			Button:
+				text:"hello"
+			Button:
+				text:"Goodbye"
+	    
